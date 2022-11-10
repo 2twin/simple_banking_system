@@ -3,9 +3,6 @@ import sqlite3
 conn = sqlite3.connect('card.s3db')
 cur = conn.cursor()
 
-# cur.execute('DELETE FROM card')
-# conn.commit()
-
 cur.execute('CREATE TABLE IF NOT EXISTS card ('
             'id INTEGER PRIMARY KEY AUTOINCREMENT,'
             'number TEXT,'
@@ -53,7 +50,6 @@ def generate_account():
     pin = '{0:04}'.format(random.randrange(0, 9999))
     cur.execute(f"INSERT INTO card (number, pin) VALUES ({number}, {pin});")
     conn.commit()
-    # accounts[number] = {'PIN': pin, 'balance': 0}
 
     print("\nYour card has been created")
     print(f"Your card number:\n{number}")
@@ -74,7 +70,6 @@ while select != '0':
         print_menu()
 
     elif select == '1' and isLogged:
-        # print("\nBalance: " + str(accounts[current_number]['balance']))
         cur.execute(f"SELECT balance FROM card WHERE number={current_number}")
         res = cur.fetchone()
 
