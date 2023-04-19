@@ -19,7 +19,7 @@ isLogged = False
 
 def print_menu():
     if not isLogged:
-        print("1. Create an account")
+        print("1. Create an account!")
         print("2. Log into account")
         print("0. Exit")
     else:
